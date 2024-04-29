@@ -34,3 +34,13 @@ weather_data = {
     { temperature: 60, conditions: "Rainy", precipitation: 0.9 }
   ]
 }
+
+p "Currently it is #{weather_data[:current][:temperature]} degrees and #{:conditions}."
+p "Forecast for the next 7 days:"
+for date in weather_data[:forecast]
+  if date[:conditions] != "Rainy" && date[:precipitation] > 0.5
+    p "#{date[:temperature]} degrees and #{date[:conditions]} with a #{(date[:precipitation]*100).to_i}% chance of rain"
+  else
+    p "#{date[:temperature]} degrees and #{date[:conditions]}"
+  end
+end
